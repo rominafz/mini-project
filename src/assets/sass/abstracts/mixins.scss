@@ -1,0 +1,33 @@
+@mixin flex {
+  display: -webkit-flex;
+  display: flex;
+}
+// Min-width: 480px (small devices and most phones)
+// Min-width: 768px (most tablets)
+// Min-width: 992px (smaller desktop viewpoints)
+// Min-width: 1200px (large devices and wide screens)
+@mixin x-small() {
+  @media only screen and (max-width: 320px) {
+    @content;
+  }
+}
+@mixin small() {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin medium() {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin large() {
+  @media only screen and (max-width: 992px) {
+    @content;
+  }
+}
+@mixin x-large() {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}

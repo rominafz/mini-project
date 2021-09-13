@@ -7,3 +7,10 @@ export const CartButton = ({ onClick, children, className }) => {
     </button>
   );
 };
+export const AddToCartButton = ({ onClick, children, className }) => {
+  return (
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
+};

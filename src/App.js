@@ -1,13 +1,13 @@
 import "./assets/sass/app.scss";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { MainRoute } from "./components/Routes";
-import Products from "./pages/Products";
+import ProductsPage from "./pages/ProductsPage";
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <MainRoute exact path="/" component={Products} />
+          <MainRoute exact path="/" component={ProductsPage} />
         </Switch>
       </Router>
     </>
