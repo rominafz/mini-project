@@ -1,0 +1,26 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 5rem;
+  background-color: $green;
+  &__content {
+    width: 50%;
+    flex-grow: 1;
+    margin: 1rem;
+  }
+  &__buttons {
+    margin: 1rem;
+    &__cartbutton {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      &__icons {
+        color: $white;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
