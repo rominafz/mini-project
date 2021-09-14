@@ -1,0 +1,15 @@
+.input-control {
+  padding: 1rem 1rem;
+  margin: 1rem;
+  &__input {
+    padding: 0.8rem 3rem 0.8rem 0.6rem;
+    border: none;
+    width: 50%;
+    height: 2.5rem;
+    border-radius: 8px;
+    background-color: $veryLight-gray;
+    &:focus {
+      border: none;
+    }
+  }
+}

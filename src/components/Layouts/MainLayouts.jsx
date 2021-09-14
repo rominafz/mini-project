@@ -1,15 +1,7 @@
-import React, { Children } from "react";
-import Footer from "../Footer";
-import Header from "../Header";
+import React from "react";
 
 const MainLayouts = ({ children }) => {
-  return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default MainLayouts;

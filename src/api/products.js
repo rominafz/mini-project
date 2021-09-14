@@ -1,8 +1,9 @@
 import axios from "axios";
-export const getAllProducts = async () => {
+export const getAllProducts = async (pageNumber, query, srot) => {
   let res = await axios({
     method: "get",
-    url: "https://www.digikala.com/front-end/search/?page=1&rows=25&price[min]=0&price[max]=100000/",
+    url: "https://www.digikala.com/front-end/search/?&price[min]=0&price[max]=100000&has_selling_stock=1/",
+    params: { rows: 24, q: query, page: pageNumber, sort: 4 },
     headers: { token: "mpfKW9ghVTCSuBZ7qTkSmEyvL38ShZxv" },
   }).catch((err) => console.log("مشکلی پیش آمده لطفا دوباره تلاش کنید"));
   return res;
