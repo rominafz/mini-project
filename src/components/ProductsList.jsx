@@ -2,7 +2,7 @@ import React from "react";
 import Product from "./Product";
 const ProductsList = React.forwardRef(({ products }, ref) => {
   return (
-    <div className="container">
+    <>
       {products?.map((item, index) => {
         if (products.length === index + 1) {
           return (
@@ -25,7 +25,7 @@ const ProductsList = React.forwardRef(({ products }, ref) => {
           );
         }
       })}
-    </div>
+    </>
   );
 });
 

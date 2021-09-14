@@ -7,7 +7,7 @@ const useFilteredData = (apicallFunction, pageNumber, query, sort) => {
 
   useEffect(() => {
     setProducts([]);
-  }, [query]);
+  }, [query, sort]);
   useEffect(() => {
     setLoading(true);
     apicallFunction(pageNumber, query, sort)

@@ -21,9 +21,6 @@ const sortingList = [
 ];
 
 const ProductsPage = () => {
-  // const [products, setProducts] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [hasMore, setHasMore] = useState(false);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
@@ -40,7 +37,7 @@ const ProductsPage = () => {
     sort
   );
 
-  /**
+  /*
    * infinite Scroll function
    */
   const lastProductRef = useCallback(
@@ -57,27 +54,9 @@ const ProductsPage = () => {
     [loading, hasMore]
   );
 
-  // useEffect(() => {
-  //   setProducts([]);
-  // }, [query]);
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getAllProducts(pageNumber, null, null)
-  //     .then((res) => {
-  //       setProducts((prevProducts) => {
-  //         return [...new Set([...prevProducts, ...res.data.data.products])];
-  //       });
-  //       setHasMore(
-  //         res.data.data.pager.current_page < res.data.data.pager.total_pages
-  //       );
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => toast.error("مشکلی پیش آمده دوباره امتحان کنید"));
-  // }, [query, pageNumber, sort]);
   /*
    * handling search after enter key
    */
-
   const handleSearch = (e) => {
     if (e.keyCode === 13) {
       setQuery(e.target.value);
@@ -86,20 +65,29 @@ const ProductsPage = () => {
       setSearch("");
     }
   };
+  /**
+   * handle sorting item
+   */
+  const handleSort = (item) => {
+    setSort(item.id);
+  };
 
   return (
-    <>
+    <div className="container">
       <ToastContainer />
-      <Input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onKeyUp={handleSearch}
-      />
-      <SortList sortList={sortingList} />
-
-      <ProductsList ref={lastProductRef} products={products} />
+      <section className="container__filter">
+        <Input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyUp={handleSearch}
+        />
+        <SortList sortList={sortingList} onClick={handleSort} sort={sort} />
+      </section>
+      <section className="container__products">
+        <ProductsList ref={lastProductRef} products={products} />
+      </section>
       <div>{loading && "Loading..."}</div>
-    </>
+    </div>
   );
 };
 
