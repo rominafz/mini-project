@@ -14,8 +14,13 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className="header__content" onClick={handleGoHome}>
-          <img src={logo} alt="it is a logo of this store" />
+        <div className="header__content">
+          <img
+            className="header__content__logo"
+            src={logo}
+            alt="it is a logo of this store"
+            onClick={handleGoHome}
+          />
         </div>
 
         <div className="header__buttons">

@@ -5,12 +5,20 @@
   align-items: center;
   flex-direction: row;
   height: 5rem;
-  background-color: $green;
+  background-color: $white;
   padding: 2rem;
+  position: sticky;
+  z-index: 50;
+  box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
   &__content {
     width: 50%;
     flex-grow: 1;
     margin: 1rem;
+    &__logo {
+      cursor: pointer;
+    }
   }
   &__buttons {
     margin: 1rem;
@@ -32,7 +40,7 @@
       cursor: pointer;
 
       &__icons {
-        color: $white;
+        color: $dark-gray;
         font-size: 1.5rem;
       }
     }

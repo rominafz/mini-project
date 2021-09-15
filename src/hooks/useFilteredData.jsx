@@ -5,23 +5,31 @@ const useFilteredData = (pageNumber, query, sort) => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [firstLoading, setFirstLoading] = useState(true);
+  const [errors, setErrors] = useState(false);
   useEffect(() => {
     setProducts([]);
   }, [query, sort]);
   useEffect(() => {
     setLoading(true);
-    getAllProducts(pageNumber, query, sort).then((res) => {
-      setProducts((prevProducts) => {
-        return [...new Set([...prevProducts, ...res.data.data.products])];
+    setErrors(false);
+
+    getAllProducts(pageNumber, query, sort)
+      .then((res) => {
+        setProducts((prevProducts) => {
+          return [...new Set([...prevProducts, ...res.data.data.products])];
+        });
+        setHasMore(
+          res.data.data.pager.current_page < res.data.data.pager.total_pages
+        );
+        setFirstLoading(false);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrors(true);
       });
-      setHasMore(
-        res.data.data.pager.current_page < res.data.data.pager.total_pages
-      );
-      setFirstLoading(false);
-      setLoading(false);
-    });
   }, [query, pageNumber, sort]);
-  return { firstLoading, loading, products, hasMore };
+  return { firstLoading, loading, products, hasMore, errors };
 };
 
 export default useFilteredData;
