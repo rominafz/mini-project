@@ -15,13 +15,14 @@ body,
 html {
   font-family: iranyekan, sans-serif !important;
   direction: rtl;
-  height: 100%;
 }
+
 body {
   font-family: iranyekan, sans-serif !important;
   @include flex;
   flex-direction: column;
   position: relative;
+  min-height: 100vh;
 }
 
 .main {

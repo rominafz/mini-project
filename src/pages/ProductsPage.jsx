@@ -6,13 +6,14 @@ import SortList from "../components/SortList";
 import useFilteredData from "../hooks/useFilteredData";
 import { Loading } from "../components/Loading";
 import { SORTINGLIST } from "../constant/SortList";
+import { useHistory } from "react-router";
 const ProductsPage = () => {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [sort, setSort] = useState(SORTINGLIST[0]?.id);
   const observer = useRef();
-
+  const history = useHistory();
   /*
    * destructring from useFilteredData Hooks
    */

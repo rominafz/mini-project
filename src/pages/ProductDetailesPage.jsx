@@ -11,10 +11,12 @@ const ProductDetailesPage = () => {
   const [product, setProduct] = useState({});
   useEffect(() => {
     setLoading(true);
-    getAProductById(productId).then((res) => {
-      setProduct(res.data.data.product);
-      setLoading(false);
-    });
+    getAProductById(productId)
+      .then((res) => {
+        setProduct(res.data.data.product);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
   }, []);
   return (
     <>
