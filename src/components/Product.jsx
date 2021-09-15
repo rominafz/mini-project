@@ -1,20 +1,38 @@
 import React from "react";
-import { AddToCartButton } from "./Button";
-const Product = React.forwardRef(({ image, title, price }, ref) => {
-  let rialPrice = price.toString().slice(0, -1);
+import { Button } from "./Button";
+import { useHistory } from "react-router";
+import { priceConverter } from "../utils/priceConverter";
+const Product = React.forwardRef(({ image, title, price, item }, ref) => {
+  const history = useHistory();
+
+  /**
+   * Change the price to Rial and seprate with comma's
+   */
+
+  /**
+   *
+   * @param {*} item
+   * defining the handleGoToDetailesPage function
+   */
+  const handleGoToDetailesPage = (item) => {
+    const newTitle = item.title.split(" ").join("-");
+    history.push(`/product/${item.id}/${newTitle}`);
+  };
   return (
-    <article ref={ref} className="product-card">
+    <article
+      ref={ref}
+      className="product-card"
+      onClick={() => handleGoToDetailesPage(item)}
+    >
       <figure className="product-card__image">
         <img className="product-card__image__img" src={image} alt="product" />
         <figcaption>{title}</figcaption>
       </figure>
       <div className="product-card__actions">
         <p className="product-card__actions__content">
-          {rialPrice}&nbsp; تومان
+          {priceConverter(price)}&nbsp; تومان
         </p>
-        <AddToCartButton className="product-card__actions__button">
-          +
-        </AddToCartButton>
+        <Button className="product-card__actions__button">+</Button>
       </div>
     </article>
   );

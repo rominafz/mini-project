@@ -1,37 +1,22 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import { getAllProducts } from "../api/products";
+import React, { useState, useRef, useCallback } from "react";
+import { ToastContainer } from "react-toastify";
 import Input from "../components/Input";
 import ProductsList from "../components/ProductsList";
 import SortList from "../components/SortList";
 import useFilteredData from "../hooks/useFilteredData";
-const sortingList = [
-  {
-    id: 4,
-    title: "پربازدیدترین",
-  },
-  {
-    id: 27,
-    title: "توصیه مشتریان",
-  },
-  {
-    id: 22,
-    title: "محبوب ترین",
-  },
-];
-
+import { Loading } from "../components/Loading";
+import { SORTINGLIST } from "../constant/SortList";
 const ProductsPage = () => {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const [sort, setSort] = useState(4);
+  const [sort, setSort] = useState(SORTINGLIST[0]?.id);
   const observer = useRef();
 
   /*
    * destructring from useFilteredData Hooks
    */
-  const { loading, products, hasMore } = useFilteredData(
-    getAllProducts,
+  const { firstLoading, loading, products, hasMore } = useFilteredData(
     pageNumber,
     query,
     sort
@@ -53,7 +38,6 @@ const ProductsPage = () => {
     },
     [loading, hasMore]
   );
-
   /*
    * handling search after enter key
    */
@@ -73,21 +57,31 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="container">
-      <ToastContainer />
-      <section className="container__filter">
-        <Input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyUp={handleSearch}
-        />
-        <SortList sortList={sortingList} onClick={handleSort} sort={sort} />
-      </section>
-      <section className="container__products">
-        <ProductsList ref={lastProductRef} products={products} />
-      </section>
-      <div>{loading && "Loading..."}</div>
-    </div>
+    <>
+      {firstLoading ? (
+        <Loading />
+      ) : (
+        // <div>loading...</div>
+        <div className="container">
+          <ToastContainer />
+          <section className="container__filter">
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyUp={handleSearch}
+            />
+            <SortList sortList={SORTINGLIST} onClick={handleSort} sort={sort} />
+          </section>
+          <section className="container__products">
+            <ProductsList ref={lastProductRef} products={products} />
+          </section>
+          {loading && (
+            <Loading />
+            // <div>loading...</div>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 

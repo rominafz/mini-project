@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/images/logo.png";
-import { CartButton } from "./Button";
+import { Button } from "./Button";
 import { RiShoppingCartLine } from "react-icons/ri";
 
 const Header = () => {
@@ -11,9 +11,9 @@ const Header = () => {
           <img src={logo} alt="it is a logo of this store" />
         </div>
         <div className="header__buttons">
-          <CartButton className="header__buttons__cartbutton">
+          <Button className="header__buttons__cartbutton">
             <RiShoppingCartLine className="header__buttons__cartbutton__icons" />
-          </CartButton>
+          </Button>
         </div>
       </header>
     </>

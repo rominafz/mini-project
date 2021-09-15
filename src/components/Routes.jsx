@@ -2,8 +2,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import MainLayouts from "./Layouts/MainLayouts";
 import Header from "./Header";
-import Footer from "./Footer";
-export const MainRoute = ({ component: Component, ...rest }) => {
+// import Footer from "./Footer";
+export const PublicRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -14,7 +14,7 @@ export const MainRoute = ({ component: Component, ...rest }) => {
             <main className="main">
               <Component {...props} />
             </main>
-            <Footer />
+            {/* <Footer /> */}
           </MainLayouts>
         );
       }}

@@ -8,3 +8,11 @@ export const getAllProducts = async (pageNumber, query, sort) => {
   }).catch((err) => console.log("مشکلی پیش آمده لطفا دوباره تلاش کنید"));
   return res;
 };
+export const getAProductById = async (productId) => {
+  let res = await axios({
+    method: "get",
+    url: `https://www.digikala.com/front-end/product/${productId}/`,
+    headers: { token: "mpfKW9ghVTCSuBZ7qTkSmEyvL38ShZxv" },
+  }).catch((err) => console.log("مشکلی پیش آمده لطفا دوباره تلاش کنید"));
+  return res;
+};

@@ -8,6 +8,7 @@ const ProductsList = React.forwardRef(({ products }, ref) => {
           return (
             <Product
               ref={ref}
+              item={item}
               key={item.id}
               image={item.images.main}
               title={item.title}
@@ -17,6 +18,7 @@ const ProductsList = React.forwardRef(({ products }, ref) => {
         } else {
           return (
             <Product
+              item={item}
               key={item.id}
               image={item.images.main}
               title={item.title}

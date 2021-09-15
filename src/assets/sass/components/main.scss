@@ -1,16 +1,24 @@
+@font-face {
+  font-family: iranyekan;
+  src: url("../../fonts/iranyekanwebregularfanum.ttf");
+  src: ulr("../../fonts/iranyekanwebregularfanum.woff");
+}
 *,
 *::before,
 *::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: iranyekan, sans-serif !important;
 }
 body,
 html {
+  font-family: iranyekan, sans-serif !important;
   direction: rtl;
   height: 100%;
 }
 body {
+  font-family: iranyekan, sans-serif !important;
   @include flex;
   flex-direction: column;
   position: relative;
